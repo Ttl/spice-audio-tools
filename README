@@ -1,0 +1,33 @@
+SPICE audio tools
+
+This repository has two programs for importing wav file to SPICE and
+exporting the output as a wav file.
+
+1. wavtospice.py
+- This tool converts a wav file with a list of values, which can be read
+  using ngspices file source. If wav file has multiple channels only the values
+  of the first channel are returned.
+
+- Usage: python wavtospice.py <input file> <output file>
+
+- Ngspice must have been compiled with xspice support. File source can be used
+  like follows:
+
+    a1 %v([in]) filesrc
+    .model filesrc filesource (file="values" amploffset=[0] amplscale=[1]
+    +                          timeoffset=0 timescale=1
+    +                          timerelative=false amplstep=false)
+
+ See ngspice manual for possible options.
+
+2. spicetowav.py
+- This tool converts ngspice output to wav file. Compatibility with other
+  simulators is untested.
+
+- Simulation must be setup to print the output values.
+  Run the ngspice in batch mode using the command line flag -b and direct
+  output to a file.
+
+- Usage: python spicetowav.py <SPICE output file> <Output wav> [clipping voltage].
+  Clipping voltage is optional and if it's unspecified wav is written
+  with maximum amplitude such that clipping doesn't occur.

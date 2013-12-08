@@ -1,0 +1,20 @@
+Lowpass filter
+
+.control
+* Save only the output values
+save v(2)
+* 44100Hz sampling frequency
+tran 22.675u 4
+print v(2)
+.endc
+
+a1 %v([input]) filesrc
+
+R1 input 1 1k
+L1 1 2 2.2m
+C1 2 0 2.4e-5
+R2 2 0 1k
+
+.model filesrc filesource (file="inputvalues" amploffset=[0] amplscale=[1]
++                          timeoffset=0 timescale=1
++                          timerelative=false amplstep=false)

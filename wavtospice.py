@@ -22,7 +22,7 @@ def read_wav(filename):
             temp = struct.unpack_from("<i", '\x00'+waveData)
         else:
             raise ValueError('Unsupported sample width')
-        data.append((t*timestep,temp[0]/(2**(8*sampwidth-1)-1)))
+        data.append((t*timestep,float(temp[0])/(2**(8*sampwidth-1)-1)))
         t += 1
     vrms = sqrt(1.0/(len(data[1]))*sum(i**2 for i in data[1]))
     print 'RMS voltage:',vrms

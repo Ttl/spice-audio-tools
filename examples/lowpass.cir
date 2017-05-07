@@ -1,11 +1,12 @@
-Lowpass filter
+.title Lowpass filter
 
 .control
 * Save only the output values
 save v(2)
 * 44100Hz sampling frequency
 tran 22.675u 4
-print v(2)
+wrdata output v(2)
+* you can use output.data as input for scripts
 .endc
 
 a1 %v([input]) filesrc

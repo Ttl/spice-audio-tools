@@ -24,9 +24,8 @@ exporting the output as a wav file.
 - This tool converts ngspice output to wav file. Compatibility with other
   simulators is untested.
 
-- Simulation must be setup to print the output values.
-  Run the ngspice in batch mode using the command line flag -b and direct
-  output to a file.
+- Use "wrdata" command in the spice netlist to save data to file.
+  Run the ngspice in batch mode using the command line flag -b.
 
 - Usage: python spicetowav.py <SPICE output file> <Output wav> [clipping voltage].
   Clipping voltage is optional and if it's unspecified wav is written
@@ -37,7 +36,7 @@ exporting the output as a wav file.
 Following commands can be used to get output from lowpass filter example file
 when run on Linux:
 
-    $ python wavtospice.py file.wav inputvalues
-    $ ngspice -b examples/lowpass.cir > spice_output
-    $ python spicetowav.py spice_output output.wav
+    $ ./wavtospice.py file.wav inputvalues
+    $ ngspice -b examples/lowpass.cir
+    $ ./spicetowav.py output.data output.wav
 

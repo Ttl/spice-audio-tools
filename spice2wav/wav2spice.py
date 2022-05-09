@@ -41,10 +41,23 @@ def read_wav(filename):
 	return data
 
 
-def write_spice(data, filename):
-	with open(filename, 'w') as f:
-		for d in data:
-			f.write("{:.6e} {:.4f}\n".format(*d))
+def header(ckt_name: str) -> str:
+    return \
+""".SUBCKT {ckt_name} N1 N2
+Vgpwl N1 N2 {filename}(""".format(ckt_name=ckt_name, filename=ckt_name)
+
+def footer() -> str:
+    return \
+""")
+.ENDS
+"""
+
+def write_spice(data, filename: str):
+    with open(filename, 'w') as f:
+        f.write(header(filename.split('.')[0]))
+        for d in data:
+            f.write("{:.6e} {:.4f}".format(*d))
+        f.write(footer())
 
 
 def main():

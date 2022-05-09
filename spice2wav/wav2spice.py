@@ -56,7 +56,7 @@ def write_spice(data, filename: str):
     with open(filename, 'w') as f:
         f.write(header(filename.split('.')[0]))
         for d in data:
-            f.write("{:.6e} {:.4f}".format(*d))
+            f.write("{:.6e} {:.4f} ".format(*d))
         f.write(footer())
 
 

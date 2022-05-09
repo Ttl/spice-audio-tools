@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-#coding: utf-8
 
-import sys
 import wave
 import struct
 import math
@@ -48,7 +46,8 @@ def write_spice(data, filename):
 		for d in data:
 			f.write("{:.6e} {:.4f}\n".format(*d))
 
-if __name__ == "__main__":
+
+def main():
 	parser = argparse.ArgumentParser()
 	parser.add_argument("wav_file", help="Specify wav file as input")
 	parser.add_argument("spice_file", help="Specify output filename for spice data")
@@ -56,3 +55,6 @@ if __name__ == "__main__":
 
 	data = read_wav(args.wav_file)
 	write_spice(data, args.spice_file)
+
+if __name__ == "__main__":
+    main()

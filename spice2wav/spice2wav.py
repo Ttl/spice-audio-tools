@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-#coding: utf-8
 
 import argparse
 import re
 import struct
-import sys
 import wave
 
 SAMPLING_RATE = 44100
@@ -60,7 +58,7 @@ def write_wav(times, voltages, filename, clipping):
 		w.writeframes(values)
 
 
-if __name__ == "__main__":
+def main():
 	parser = argparse.ArgumentParser()
 	parser.add_argument("spice_output",
 		help="Specify file with spice output")
@@ -72,3 +70,6 @@ if __name__ == "__main__":
 
 	times, voltages = parse_output(args.spice_output)
 	write_wav(times, voltages, args.wav_file, args.clipping)
+
+if __name__ == "__main__":
+    main()

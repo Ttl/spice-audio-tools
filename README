@@ -31,12 +31,19 @@ exporting the output as a wav file.
   Clipping voltage is optional and if it's unspecified wav is written
   with maximum amplitude such that clipping doesn't occur.
 
+# Installing
+
+To install the package and have "wavtospice" and "spicetowav" binaries on your path the package can be installed with:
+
+    $ pip install .
+
 # Example
 
 Following commands can be used to get output from lowpass filter example file
 when run on Linux:
 
-    $ ./wavtospice.py file.wav inputvalues
+    $ wavtospice file.wav inputvalues
     $ ngspice -b examples/lowpass.cir
-    $ ./spicetowav.py output.data output.wav
+    $ spicetowav output.data output.wav
+
 

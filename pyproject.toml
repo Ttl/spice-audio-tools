@@ -1,0 +1,37 @@
+[project]
+name = "spice-audio-tools"
+dynamic = ["version"]
+authors = [
+  { name="Henrik Forstén", email="henrik.forsten@gmail.com" },
+]
+description = "Convert wav to SPICE filesource and SPICE simulation results to wav"
+readme = "README"
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = []
+
+[project.urls]
+"Homepage" = "https://github.com/Ttl/spice-audio-tools"
+"Bug Tracker" = "https://github.com/Ttl/spice-audio-tools/issues"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+license-files = ["LICENSE.txt"]
+
+[tool.setuptools.dynamic]
+version = {attr = "spiceaudiotools.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["spiceaudiotools"]
+
+[project.scripts]
+spicetowav = "spiceaudiotools.spicetowav:main"
+wavtospice = "spiceaudiotools.wavtospice:main"
